@@ -1,0 +1,23 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        boolean word = false;
+        int start = 0;
+        int len = 0;
+        int end = 0;
+        for(int i = s.length()-1; i >= 0; i--){
+            if(word == true && Character.isWhitespace(s.charAt(i)) == true){
+                start = i + 1;
+                break;
+            } else if(word == false && Character.isWhitespace(s.charAt(i)) == false){
+                word = true;
+                end = i;
+            }
+        }
+        
+        while (start <= end){
+           len++; 
+           start++;
+        }
+        return len;
+    }
+}
